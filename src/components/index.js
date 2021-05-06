@@ -7,6 +7,8 @@ import {
   TotalCreditsAndDebtisByInstitution,
   Transactions,
 } from "./Reports";
+import { Login } from "./Login";
+import { FormTransactions } from "./Transactions";
 
 export {
   NavBar,
@@ -16,4 +18,6 @@ export {
   OperationsByAnAccount,
   TotalCreditsAndDebtisByInstitution,
   Transactions,
+  Login,
+  FormTransactions
 };

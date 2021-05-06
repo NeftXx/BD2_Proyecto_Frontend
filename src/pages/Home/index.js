@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Tabs, Tab } from "@material-ui/core";
+import { Tabs, Tab, Box } from "@material-ui/core";
 import SwipeableViews from "react-swipeable-views";
 import {
   Accounts,
@@ -7,6 +7,7 @@ import {
   OperationsByAnAccount,
   TotalCreditsAndDebtisByInstitution,
   Transactions,
+  FormTransactions
 } from "../../components";
 import { useGetInstitutions, useGetAccounts } from "../../hooks";
 
@@ -24,13 +25,14 @@ const Home = () => {
   };
 
   return (
-    <>
+    <Box p={2}>
       <Tabs value={index} fullWidth onChange={handleChange}>
         <Tab label="Cuentas" />
         <Tab label="Instituciones" />
         <Tab label="Operaciones por cuenta" />
         <Tab label="Totales de créditos y débitos por institución" />
         <Tab label="Transacciones por usuario" />
+        <Tab label="Realizar nuevas transacciones" />
       </Tabs>
       <SwipeableViews index={index} onChangeIndex={handleChangeIndex}>
         <Accounts accounts={accounts} />
@@ -38,8 +40,9 @@ const Home = () => {
         <OperationsByAnAccount />
         <TotalCreditsAndDebtisByInstitution />
         <Transactions />
+        <FormTransactions />
       </SwipeableViews>
-    </>
+    </Box>
   );
 };
 

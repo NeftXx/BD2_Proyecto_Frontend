@@ -3,11 +3,12 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { Router as Wouter } from "wouter";
 import Router from "./Router";
-import { NavBar, Footer } from "./components";
+import { NavBar, Footer, Login } from "./components";
 
 const { useMediaQuery } = require("@material-ui/core");
 
 const App = () => {
+  const [token, setToken] = useState();
   const [prefersDarkMode, updatePrefers] = useState(
     useMediaQuery("(prefers-color-scheme: dark)")
   );
@@ -30,10 +31,14 @@ const App = () => {
     <Wouter>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <NavBar changeTheme={changeTheme} />
-        <main>
-          <Router />
-        </main>
+        <NavBar changeTheme={changeTheme} setToken={setToken} token={token} />
+        {token ? (
+          <main>
+            <Router />
+          </main>
+        ) : (
+          <Login setToken={setToken} />
+        )}
         <Footer />
       </ThemeProvider>
     </Wouter>
